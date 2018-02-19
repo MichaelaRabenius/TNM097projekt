@@ -2,17 +2,21 @@
 clear
 
 % Load image
-img = im2double(imread('images/three.JPG'));
+img = im2double(imread('images/birds.jpg'));
 [row, col] = size(img(:,:,1));
 
+resultIm = img;
+
 % Size of area to be replaced
-s = 20;
+s = 15;
 
-restRow = mod(row,s);
-restCol = mod(col,s);
+restRow = mod(row,s)
+restCol = mod(col,s)
 
-% Crop image
-resultIm = cropIm(img,s,restRow,restCol,row,col);
+while(restRow ~= 0)
+    cropResult = zeros([row-1 col]);
+    cropResult = img()
+end
 
 for j = 0:s:row-s
     for i = 0:s:col-s
