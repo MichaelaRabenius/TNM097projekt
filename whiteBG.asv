@@ -1,0 +1,9 @@
+function [ out ] = whiteBG( in )
+%WHITEBG Summary of this function goes here
+%   Detailed explanation goes here
+r = in(:,:,1);
+g = in(:,:,2);
+b = in(:,:,3);
+blackPixels = r == 0 & g  == 0 & blueChannel  == 0;
+end
+
