@@ -1,4 +1,4 @@
-img = imread('db1/shape01.png');
+img = imread('oval_b.png');
 %imshow(img);
 im = rgb2gray(im2double(img));
 shape = (im > 0);
@@ -26,9 +26,6 @@ end
 palette = zeros(size(shape));
 
 circles = {};
-
-
-circles = {};
 for i = 1:171
    palette(:,:,1) = colors(i,1);
    palette(:,:,2) = colors(i,2);
@@ -38,7 +35,7 @@ for i = 1:171
    palette(:,:,1) = palette(:,:,1).*shape;
    palette(:,:,2) = palette(:,:,2).*shape;
    palette(:,:,3) = palette(:,:,3).*shape;   
-   %palette(palette(:,:,:) <= 0) =1;
+   palette(palette(:,:,:) <= 0) =1;
    %circles{i} = palette;
    circles{i} = palette;
 
@@ -46,22 +43,19 @@ for i = 1:171
    %truesize
    
 end
-save('circles.mat', 'circles')
+%save('circles.mat', 'circles')
 
-%store = mat2cell(circles);
 
 %%
 
-filename = 'db2/shape_';
+filename = 'db2/blob_';
 
 for i =1:171
     subplot(9,19,i), imshow(circles{i});
     
-    name = strcat(filename, i);
+    name = strcat(filename, int2str(i));
     name = strcat(name, '.png');
-    imwrite(circles{1}, name);
-
-    
+    imwrite(circles{i}, name);  
 end
 
 

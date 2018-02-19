@@ -1,4 +1,4 @@
-img = imread('shape01.png');
+img = imread('oval_b.png');
 %imshow(img);
 im = rgb2gray(im2double(img));
 shape = (im > 0);
@@ -48,10 +48,10 @@ end
 
 %%
 
-filename = 'db1/shape_';
+filename = 'db3/blib_';
 
 for i =1:171
-    subplot(9,19,i), imshow(circles{i});
+    %subplot(9,19,i), imshow(circles{i});
     
     name = strcat(filename, int2str(i));
     name = strcat(name, '.png');
