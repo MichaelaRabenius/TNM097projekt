@@ -1,0 +1,17 @@
+function diff = DiffPixles(prevPix,thisPix)
+% Difference between two pixels
+    diff = zeros(size(prevPix));
+    thres = 0.2;
+
+    for i = 1:3
+        diff(i) = abs(prevPix(i) - thisPix(i));
+    end
+    
+    value = sum(diff);
+    
+    if (value > thres)
+        Messa
+    end
+    
+end
+

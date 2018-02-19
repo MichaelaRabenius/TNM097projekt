@@ -1,5 +1,6 @@
 %% TNM097 project
 clear
+thres = 0.2;
 
 % Load image
 img = im2double(imread('images/three.JPG'));
@@ -13,6 +14,8 @@ restCol = mod(col,s);
 
 % Crop image
 resultIm = cropIm(img,s,restRow,restCol,row,col);
+prevPix = [0 0 0];
+diff = [0 0 0];
 
 for j = 0:s:row-s
     for i = 0:s:col-s
@@ -25,6 +28,11 @@ for j = 0:s:row-s
         resultIm(j+1:(j+s), i+1:(i+s), 1) = meanr;
         resultIm(j+1:(j+s), i+1:(i+s), 2) = meang;
         resultIm(j+1:(j+s), i+1:(i+s), 3) = meanb;
+        
+        thisPix = [meanr meang meanb];
+        DiffPixles(prevPix,thisPix);
+        prevPix = thisPix;
+        
     end
 end
 
