@@ -1,12 +1,9 @@
-function shape = correctShape(diff)
+function shape = correctShape(diff,next_diff,thres)
 
-angleMessage = 'Change angle!';
-blobMessage = 'Blob time!';
-noChange = 'No.';
+angleMessage = 'Change Angle!';
+blobMessage = 'Blob!';
 
-thres = 0.2;
-
-if(diff > thres)
+if((diff > thres) && (next_diff > thres))
     shape = angleMessage;
 else
     shape = blobMessage;

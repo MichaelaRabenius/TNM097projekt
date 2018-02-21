@@ -3,7 +3,7 @@ clear
 thres = 0.2;
 
 % Load image
-img = im2double(imread('images/three.JPG'));
+img = im2double(imread('images/blackorange.png'));
 [row, col] = size(img(:,:,1));
 
 % Size of area to be replaced
@@ -14,7 +14,7 @@ restCol = mod(col,s);
 
 % Crop image
 resultIm = cropIm(img,s,restRow,restCol,row,col);
-
+imshow(resultIm)
 for j = 0:s:row-s
     for i = 0:s:col-s
         % Calculate mean for chosen area in each channel
@@ -31,6 +31,7 @@ for j = 0:s:row-s
 end
 
 checkArea = 4; % How far forward to check value. (=4 om 5 pixlar fram)
+thres = 0.2;
 
 for i = 0:s:row-s
     for j = 0:s:col-s
@@ -40,9 +41,9 @@ for i = 0:s:row-s
         firstb = resultIm(i + (s/2),j + (s/2),3);
         
         thisPix = [firstr firstg firstb];
-        nextPix = [0 0 0];
         
-        if(((j + (s/2) + s*checkArea) < (col-s)) && (i + (s/2) < (row-s))) % check if column exist...
+        % check if column exist...
+        if(((j + (s/2) + s*checkArea) < (col-s)) && (i + (s/2) < (row-s)))
             rval = resultIm(i + (s/2),j + (s/2) + s*checkArea, 1);
             gval = resultIm(i + (s/2),j + (s/2) + s*checkArea, 2);
             bval = resultIm(i + (s/2),j + (s/2) + s*checkArea, 3);
@@ -51,10 +52,21 @@ for i = 0:s:row-s
         nextPix = [rval gval bval];
         
         diff = DiffPixles(thisPix,nextPix);
-        correct = correctShape(diff)
-        thisPix = nextPix;
         
-    end 
+        if(diff > thres)
+            
+            newr = resultIm(i + (s/2),j + (s/2) + 2*s*checkArea, 1);
+            newg = resultIm(i + (s/2),j + (s/2) + 2*s*checkArea, 2);
+            newb = resultIm(i + (s/2),j + (s/2) + 2*s*checkArea, 3);
+            
+            next_next = [newr newg newb];
+            next_diff = DiffPixles(nextPix,next_next);
+            
+            thisArea = correctShape(diff,next_diff,thres)
+        else
+            thisArea = 'Same as previous...'
+        end
+    end
 end
 
 imshow(resultIm);
