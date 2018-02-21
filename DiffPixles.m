@@ -1,7 +1,7 @@
 function diff = DiffPixles(prevPix,thisPix)
 % Difference between two pixel
-angleMessage = "Change angle!";
-blobMessage = "Blob time!";
+angleMessage = 'Change angle!';
+blobMessage = 'Blob time!';
 thres = 0.2;
 
     diff = zeros(size(prevPix));

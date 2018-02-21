@@ -33,6 +33,8 @@ for j = 0:s:row-s
         DiffPixles(prevPix,thisPix);
         prevPix = thisPix;
         
+        
+        
     end
 end
 
