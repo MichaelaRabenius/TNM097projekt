@@ -48,7 +48,7 @@ function cropResult = cropIm(inIm,s,restRow,restCol,row,col)
             newcol = col-1;
 
             cropResult = zeros([row newcol 3]);
-            cropResult = cropResult(1:row,1:newcol,:);
+            cropResult = inIm(1:row,1:newcol,:);
 
             restCol = mod(newcol,s);
             col = newcol;
@@ -57,5 +57,6 @@ function cropResult = cropIm(inIm,s,restRow,restCol,row,col)
     else
           cropResult = inIm;  
     end
+    
 end
 
