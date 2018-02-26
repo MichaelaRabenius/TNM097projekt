@@ -6,14 +6,13 @@ checkArea = 4; % How far forward to check value.
 thres = 0.13; % Threshold for pixel values
 
 % Load image
-img = im2double(imread('images/coffee.jpg'));
+img = im2double(imread('images/london.jpg'));
 img = checkSize(img);
 [row, col] = size(img(:,:,1));
 
 % Size of area to be replaced
 %s = 20;
-pearl = 40; % Antal p?rlor i x-led
-s = round(row/pearl);
+s = size(img())
 
 restRow = mod(row,s);
 restCol = mod(col,s);
