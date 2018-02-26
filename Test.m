@@ -4,15 +4,14 @@ swatches = imread('swatches2.png');
 dots = GenPearls(im,swatches, 592);
 
 for i =1:592
-    subplot(37,16,i), imshow(dots{i});
-    
+    subplot(37,16,i), imshow(dots{i}); 
 end
 
 
 
 %% Inserting pearls in an image of favourable proportions
 % clear all
-% load circles.mat;
+ load circles.mat;
 % load blobs.mat;
 % circles = blobs;
 
@@ -21,7 +20,7 @@ end
 
 circles = dots;
 
-im = im2double(imread('images/harry.jpg'));
+im = im2double(imread('images/jag.jpg'));
 imshow(im);
 im = rgb2lab(im);
 [nr_rows, nr_cols] = size(im(:,:,1));
