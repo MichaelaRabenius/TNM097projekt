@@ -57,5 +57,6 @@ function cropResult = cropIm(inIm,s,restRow,restCol,row,col)
     else
           cropResult = inIm;  
     end
+    
 end
 

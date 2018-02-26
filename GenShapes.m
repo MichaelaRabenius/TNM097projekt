@@ -31,7 +31,7 @@ for col = 10:20:400
 end
 
 showRGB(colors);
-palette = zeros(size(shape));
+palette = zeros(size(circleshape));
 
 circles = {};
 for i = 1:171
