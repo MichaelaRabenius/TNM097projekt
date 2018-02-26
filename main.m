@@ -1,6 +1,6 @@
 %% TNM097 project
 clear
-thres = 0.2;
+%thres = 0.2;
 
 % Load image
 img = im2double(imread('images/blackorange.png'));
@@ -14,7 +14,7 @@ restCol = mod(col,s);
 
 % Crop image
 resultIm = cropIm(img,s,restRow,restCol,row,col);
-imshow(resultIm)
+%imshow(resultIm)
 for j = 0:s:row-s
     for i = 0:s:col-s
         % Calculate mean for chosen area in each channel
@@ -30,8 +30,9 @@ for j = 0:s:row-s
     end
 end
 
-checkArea = 4; % How far forward to check value. (=4 om 5 pixlar fram)
-thres = 0.2;
+checkArea = 4; % How far forward to check value.
+%thres = 0.2;
+thres = 0.13;
 
 for i = 0:s:row-s
     for j = 0:s:col-s
@@ -53,7 +54,7 @@ for i = 0:s:row-s
         
         diff = DiffPixles(thisPix,nextPix);
         
-        if(diff > thres)
+        if((diff > thres) && (i + (s/2) < (row-s)) && (j + (s/2) + 2*s*checkArea < (col-s)))
             
             newr = resultIm(i + (s/2),j + (s/2) + 2*s*checkArea, 1);
             newg = resultIm(i + (s/2),j + (s/2) + 2*s*checkArea, 2);
@@ -62,9 +63,9 @@ for i = 0:s:row-s
             next_next = [newr newg newb];
             next_diff = DiffPixles(nextPix,next_next);
             
-            thisArea = correctShape(diff,next_diff,thres)
+            thisArea = correctShape(diff,next_diff,thres);
         else
-            thisArea = 'Same as previous...'
+            thisArea = 'Same as previous...';
         end
     end
 end
