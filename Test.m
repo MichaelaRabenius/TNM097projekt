@@ -7,20 +7,32 @@ for i =1:592
     subplot(37,16,i), imshow(dots{i}); 
 end
 
+%%
+load circles.mat
+
+c = im2double(circles{1});
+c2 = im2double(imread('db1/blob_1.png'));
+
+imshow(c);
+figure
+imshow(c2);
+
+clab = rgb2lab(c);
+
 
 
 %% Inserting pearls in an image of favourable proportions
 % clear all
- load circles.mat;
+% load circles.mat;
 % load blobs.mat;
 % circles = blobs;
 
 % load blibs.mat;
 % circles = blibs;
-
+load dots.mat
 circles = dots;
 
-im = im2double(imread('images/jag.jpg'));
+im = imread('images/jag.jpg');
 imshow(im);
 im = rgb2lab(im);
 [nr_rows, nr_cols] = size(im(:,:,1));
