@@ -1,12 +1,16 @@
-function cropResult = cropIm(inIm,s,restRow,restCol,row,col)
+function cropResult = cropIm(inIm,s)
 % Function that crops image so it adds up correct with s
+[row, col] = size(inIm(:,:,1));
+restRow = mod(row,s);
+restCol = mod(col,s);
+
 
     if(restRow ~= 0 && restCol == 0)
         while(restRow ~= 0)
 
             newrow = row-1;
 
-            cropResult = zeros([newrow col 3]);
+            %cropResult = zeros([newrow col 3]);
             cropResult = inIm(1:newrow,1:col,:);
 
             restRow = mod(newrow,s);
@@ -20,7 +24,7 @@ function cropResult = cropIm(inIm,s,restRow,restCol,row,col)
 
             newcol = col-1;
 
-            cropResult = zeros([row newcol 3]);
+            %cropResult = zeros([row newcol 3]);
             cropResult = inIm(1:row,1:newcol,:);
 
             restCol = mod(newcol,s);
@@ -35,7 +39,7 @@ function cropResult = cropIm(inIm,s,restRow,restCol,row,col)
 
             newrow = row-1;
 
-            cropResult = zeros([newrow col 3]);
+            %cropResult = zeros([newrow col 3]);
             cropResult = inIm(1:newrow,1:col,:);
 
             restRow = mod(newrow,s);
@@ -47,7 +51,7 @@ function cropResult = cropIm(inIm,s,restRow,restCol,row,col)
 
             newcol = col-1;
 
-            cropResult = zeros([row newcol 3]);
+            %cropResult = zeros([row newcol 3]);
             cropResult = inIm(1:row,1:newcol,:);
 
             restCol = mod(newcol,s);
