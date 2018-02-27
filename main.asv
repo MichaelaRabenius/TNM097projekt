@@ -8,7 +8,11 @@ thres = 0.13; % Threshold for pixel values
 % Load image
 
 img = im2double(imread('images/wave.jpg'));
+<<<<<<< HEAD
 %img = checkSize(img);
+=======
+img = checkSize(img);
+>>>>>>> annies
 [row, col] = size(img(:,:,1));
 
 % Size of area to be replaced
@@ -21,7 +25,7 @@ restCol = mod(col,s);
 
 % Crop image
 resultIm = cropIm(img,s,restRow,restCol,row,col);
-%imshow(resultIm)
+imshow(resultIm)
 
 load blabs.mat
 load blobs.mat
@@ -34,6 +38,7 @@ for i=1:nr_colors
 end
 f = blobs{1};
 [r, c] = size(f(:,:,1));
+%c = s;
 
 [r_cropped, c_cropped] = size(resultIm(:,:,1));
 
@@ -48,7 +53,7 @@ for i = 1:r:r_cropped
         inx = inx + 1; 
     end
 end
-imshow(resultIm);
+%imshow(resultIm);
 
 checkArea = 3; % How far forward to check value.
 %thres = 0.2;

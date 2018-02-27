@@ -1,0 +1,24 @@
+function outIm = checkSize(inIm)
+
+[r,c] = size(inIm);
+TooLarge = 800;
+TooSmall = 500;
+
+if((r > c) && (r > TooLarge))
+    scaleFac = TooLarge/r;
+    outIm = imresize(inIm,scaleFac);
+elseif((c > r) && (c > TooLarge))
+    scaleFac = TooLarge/c;
+    outIm = imresize(inIm,scaleFac);
+elseif((c > r) && (c > TooSmall))
+    scaleFac = TooSmall/r;
+    outIm = imresize(inIm,scaleFac);
+elseif(c < TooSmall)
+    scaleFac = TooSmall/c;
+    outIm = imresize(inIm,scaleFac);
+else
+    outIm = inIm;
+end
+
+end
+
