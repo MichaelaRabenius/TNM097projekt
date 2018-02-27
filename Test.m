@@ -9,13 +9,21 @@ blabs = GenPearls(blabshape,swatches, 171);
 blibs = GenPearls(blibshape,swatches, 171);
 blobs = GenPearls(blobshape,swatches, 171);
 
+r_blabs = GenPearls(imrotate(blabshape,90),swatches, 171);
+r_blibs = GenPearls(imrotate(blibshape,90),swatches, 171);
+
+
+% 
 % for i =1:171
-%     subplot(6,19,i), imshow(blabs{i}); 
+%     subplot(6,19,i), imshow(r_blabs{i}); 
 % end
 
 save('blabs.mat', 'blabs');
 save('blibs.mat', 'blibs');
 save('blobs.mat', 'blobs');
+save('r_blibs.mat', 'r_blibs');
+save('r_blabs.mat', 'r_blabs');
+
 
 %%
 c2 = im2double(imread('db1/blob_1.png'));

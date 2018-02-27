@@ -7,7 +7,7 @@ thres = 0.13; % Threshold for pixel values
 
 % Load image
 
-img = im2double(imread('images/wave.jpg'));
+img = im2double(imread('images/abstract.jpg'));
 img = checkSize(img);
 [row, col] = size(img(:,:,1));
 
@@ -26,6 +26,8 @@ resultIm = cropIm(img,s);
 load blabs.mat
 load blobs.mat
 load blibs.mat
+load r_blibs.mat
+load r_blabs.mat
 
 circles = blobs;
 nr_colors = length(circles);
@@ -64,6 +66,7 @@ checkArea = 3; % How far forward to check value.
 thres = 0.13;
 
 ind = 0;
+next_shape = 'blib';
 for i = 1:s:r_cropped
     for j = 1:s:c_cropped
         ind = ind+1;
@@ -101,13 +104,24 @@ for i = 1:s:r_cropped
         if(strcmp(thisArea ,'Change Angle!'))
             if(ind <= length(indices))
                 d = indices(ind);
-                resultIm(i:i+(s-1), j:j+(s-1),:) = imresize(blabs{d},scaleBlb);
+                
+                if(strcmp(next_shape,'blib'))
+                    resultIm(i:i+(s-1), j:j+(s-1),:) = imresize(blibs{d},scaleBlb);
+                    next_shape = 'blab';
+                    
+                elseif(strcmp(next_shape,'blab'))
+                    resultIm(i:i+(s-1), j:j+(s-1),:) = imresize(blabs{d},scaleBlb);
+                    next_shape = 'r_blib';
+                elseif(strcmp(next_shape,'r_blib'))
+                    resultIm(i:i+(s-1), j:j+(s-1),:) = imresize(r_blibs{d},scaleBlb);
+                    next_shape = 'r_blab';
+                elseif(strcmp(next_shape,'r_blab'))
+                    resultIm(i:i+(s-1), j:j+(s-1),:) = imresize(r_blabs{d},scaleBlb);
+                    next_shape = 'blib';   
+                end
+                
             end
-        elseif(strcmp(thisArea ,'Blob!'))
-            if(ind <= length(indices))
-                d = indices(ind);
-                resultIm(i:i+(s-1), j:j+(s-1),:) = imresize(blibs{d},scaleBlb);
-            end
+            
         end
         
     end

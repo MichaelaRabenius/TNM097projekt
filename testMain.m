@@ -23,6 +23,8 @@ for i=1:nr_colors
     blabs_lab{i} = rgb2lab(blabs{i});
 end
 
+
+
 %% Preprocess image (scaling and cropping)
 originalIm = im2double(imread('images/wave.jpg'));
 
