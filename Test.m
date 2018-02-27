@@ -32,7 +32,7 @@ clab = rgb2lab(c);
 load dots.mat
 circles = dots;
 
-im = imread('images/jag.jpg');
+im = imread('images/wave.jpg');
 imshow(im);
 im = rgb2lab(im);
 [nr_rows, nr_cols] = size(im(:,:,1));
