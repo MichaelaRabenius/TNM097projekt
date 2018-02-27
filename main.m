@@ -7,7 +7,7 @@ thres = 0.13; % Threshold for pixel values
 
 % Load image
 
-img = im2double(imread('images/wave.jpg'));
+img = im2double(imread('images/jag.jpg'));
 %img = checkSize(img);
 [row, col] = size(img(:,:,1));
 
@@ -23,16 +23,16 @@ restCol = mod(col,s);
 resultIm = cropIm(img,s,restRow,restCol,row,col);
 %imshow(resultIm)
 
-load circles.mat
+load blabs.mat
 load blobs.mat
 load blibs.mat
 
-nr_colors = length(circles);
-circles_lab = circles;
+nr_colors = length(blobs);
+circles_lab = blobs;
 for i=1:nr_colors
-    circles_lab{i} = rgb2lab(circles{i});
+    circles_lab{i} = rgb2lab(blobs{i});
 end
-f = circles{1};
+f = blobs{1};
 [r, c] = size(f(:,:,1));
 
 [r_cropped, c_cropped] = size(resultIm(:,:,1));
@@ -42,7 +42,7 @@ for i = 1:r:r_cropped
     for j = 1:c:c_cropped
         area = rgb2lab(resultIm( i:i+(c-1), j:j+(c-1), :));
         d = calColorDistance(area, circles_lab);
-        resultIm(i:i+(c-1), j:j+(c-1),:) = circles{d};
+        resultIm(i:i+(c-1), j:j+(c-1),:) = blobs{d};
         
         indices(inx) = d;
         inx = inx + 1; 
@@ -91,7 +91,7 @@ for i = 1:s:r_cropped
         
         if(strcmp(thisArea ,'Change Angle!'))
             d = indices(ind);
-            resultIm(i:i+(s-1), j:j+(s-1),:) = blobs{d};
+            resultIm(i:i+(s-1), j:j+(s-1),:) = blabs{d};
         elseif(strcmp(thisArea ,'Blob!'))
             d = indices(ind);
             resultIm(i:i+(s-1), j:j+(s-1),:) = blibs{d};

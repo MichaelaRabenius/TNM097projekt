@@ -24,20 +24,20 @@ b1 = avg_img(:,:,3);
 
 dist = zeros([1 nr_colors]);
 for i = 1:nr_colors
-     c = colors{i};
-    [row, col] = size(c(:,:,1));
-    L2 = c(floor(row/2), floor(col/2),1);
-    a2 = c(floor(row/2), floor(col/2),2);
-    b2 = c(floor(row/2), floor(col/2),3);
-    
-    
-%     c = colors{i};
-%     avg_c = (mean((c)));
-%     
+%      c = colors{i};
 %     [row, col] = size(c(:,:,1));
-%     L2 = avg_c(:,:,1);
-%     a2 = avg_c(:,:,2);
-%     b2 = avg_c(:,:,3);
+%     L2 = c(floor(row/2), floor(col/2),1);
+%     a2 = c(floor(row/2), floor(col/2),2);
+%     b2 = c(floor(row/2), floor(col/2),3);
+%     
+    
+    c = colors{i};
+    avg_c = mean(mean((c)));
+    
+    [row, col] = size(c(:,:,1));
+    L2 = avg_c(:,:,1);
+    a2 = avg_c(:,:,2);
+    b2 = avg_c(:,:,3);
     
     dist(i) = sqrt( (L2 - L1)^2 + (a2 - a1)^2 + (b2 - b1)^2 );
 end

@@ -35,7 +35,7 @@ for col = start_width:width:swatch_c
     end   
 end
 
-%showRGB(colors);
+showRGB(colors);
 palette = zeros(size(shapemask));
 
 shapes = {[1 nr_colors]};

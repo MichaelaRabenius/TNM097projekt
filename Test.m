@@ -1,20 +1,25 @@
 % % %% GenPearl testdots
-im = imread('oval_a.png');
-swatches = imread('swatches2.png');
-dots = GenPearls(im,swatches, 592);
+blabshape = imread('oval_a.png');
+blibshape = imread('oval_b.png');
+blobshape = imread('shape01.png');
 
-for i =1:592
-    subplot(37,16,i), imshow(dots{i}); 
-end
+swatches = imread('swatches.png');
+
+blabs = GenPearls(blabshape,swatches, 171);
+blibs = GenPearls(blibshape,swatches, 171);
+blobs = GenPearls(blobshape,swatches, 171);
+
+% for i =1:171
+%     subplot(6,19,i), imshow(blabs{i}); 
+% end
+
+save('blabs.mat', 'blabs');
+save('blibs.mat', 'blibs');
+save('blobs.mat', 'blobs');
 
 %%
-load circles.mat
-
-c = im2double(circles{1});
 c2 = im2double(imread('db1/blob_1.png'));
 
-imshow(c);
-figure
 imshow(c2);
 
 clab = rgb2lab(c);
