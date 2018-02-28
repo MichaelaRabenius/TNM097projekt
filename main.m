@@ -7,7 +7,7 @@ thres = 0.13; % Threshold for pixel values
 
 % Load image
 
-img = im2double(imread('images/abstract.jpg'));
+img = im2double(imread('images/colors.jpg'));
 img = checkSize(img);
 [row, col] = size(img(:,:,1));
 
@@ -128,3 +128,5 @@ for i = 1:s:r_cropped
 end
 figure
 imshow(resultIm);
+figure
+imshow(img);
