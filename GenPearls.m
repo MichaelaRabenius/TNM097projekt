@@ -45,7 +45,7 @@ for i = 1:nr_colors
    palette(:,:,3) = colors(i,3);
    
    c = createShape(palette, shapemask);
-   c = whiteBG(c);
+   %c = whiteBG(c);
    shapes{i} = c;
 
 end

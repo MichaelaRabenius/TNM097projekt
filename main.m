@@ -7,7 +7,7 @@ thres = 0.13; % Threshold for pixel values
 
 % Load image
 
-img = im2double(imread('images/colors.jpg'));
+img = im2double(imread('images/wave.jpg'));
 img = checkSize(img);
 [row, col] = size(img(:,:,1));
 

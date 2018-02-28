@@ -1,7 +1,7 @@
 % % %% GenPearl testdots
-blabshape = imread('oval_a.png');
-blibshape = imread('oval_b.png');
-blobshape = imread('shape01.png');
+blabshape = imread('shapes/shape4.png');
+blibshape = imread('shapes/shape6.png');
+blobshape = imread('shapes/shape1.png');
 
 swatches = imread('swatches.png');
 

@@ -29,7 +29,7 @@ for i = 1:nr_colors
 %     L2 = c(floor(row/2), floor(col/2),1);
 %     a2 = c(floor(row/2), floor(col/2),2);
 %     b2 = c(floor(row/2), floor(col/2),3);
-%     
+    
     
     c = colors{i};
     avg_c = mean(mean((c)));
