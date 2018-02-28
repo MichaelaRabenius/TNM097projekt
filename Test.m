@@ -3,16 +3,16 @@ blabshape = imread('shapes/shape6.png');
 blibshape = imread('shapes/shape4.png');
 blobshape = imread('shapes/shape1.png');
 
-swatches = imread('swatch4.png');
+swatches = imread('swatches.png');
 
-nr = 777;
+nr = 171;
 
-blabs = GenPearls(blabshape,swatches, nr);
-blibs = GenPearls(blibshape,swatches, nr);
-blobs = GenPearls(blobshape,swatches, nr);
+[blabs colors] = GenPearls(blabshape,swatches, nr);
+[blibs colors] = GenPearls(blibshape,swatches, nr);
+[blobs colors] = GenPearls(blobshape,swatches, nr);
 
-r_blabs = GenPearls(imrotate(blabshape,90),swatches, nr);
-r_blibs = GenPearls(imrotate(blibshape,90),swatches, nr);
+[r_blabs colors] = GenPearls(imrotate(blabshape,90),swatches, nr);
+[r_blibs colors] = GenPearls(imrotate(blibshape,90),swatches, nr);
 
 
 % 
@@ -25,6 +25,7 @@ save('blibs.mat', 'blibs');
 save('blobs.mat', 'blobs');
 save('r_blibs.mat', 'r_blibs');
 save('r_blabs.mat', 'r_blabs');
+save('colors.mat', 'colors');
 
 
 %%

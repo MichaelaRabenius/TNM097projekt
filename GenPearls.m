@@ -1,4 +1,4 @@
-function [ shapes ] = GenPearls( inshape, swatches, nr_colors )
+function [ shapes, colors ] = GenPearls( inshape, swatches, nr_colors )
 %GENPEARLS Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -45,7 +45,7 @@ for i = 1:nr_colors
    palette(:,:,3) = colors(i,3);
    
    c = createShape(palette, shapemask);
-   c = whiteBG(c);
+   %c = whiteBG(c);
    shapes{i} = c;
 
 end

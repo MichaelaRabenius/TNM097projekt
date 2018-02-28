@@ -70,7 +70,7 @@ for i = 1:r:r_cropped
 end
 %imshow(resultIm);
 
-color_space = OptimizeColors(org_colors, colors, 19);
+color_space = OptimizeColors(unique(org_colors, 'rows'), colors, 19);
 
 % 
 % 
