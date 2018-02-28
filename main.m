@@ -7,13 +7,13 @@ thres = 0.13; % Threshold for pixel values
 
 % Load image
 
-img = im2double(imread('images/wave.jpg'));
+img = im2double(imread('images/jag.jpg'));
 img = checkSize(img);
 [row, col] = size(img(:,:,1));
 
 % Size of area to be replaced
 %s = 20;
-p = 40; % Antal p?rlor i x-led
+p = 80; % Antal p?rlor i x-led
 s = round(row/p);
 
 restRow = mod(row,s);
@@ -59,11 +59,11 @@ for i = 1:r:r_cropped
         inx = inx + 1;
     end
 end
-%imshow(resultIm);
+imshow(resultIm);
 
 checkArea = 3; % How far forward to check value.
 %thres = 0.2;
-thres = 0.13;
+thres = 0.6;
 
 ind = 0;
 next_shape = 'blib';

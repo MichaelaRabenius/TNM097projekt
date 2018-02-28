@@ -1,16 +1,18 @@
 % % %% GenPearl testdots
-blabshape = imread('shapes/shape4.png');
-blibshape = imread('shapes/shape6.png');
+blabshape = imread('shapes/shape6.png');
+blibshape = imread('shapes/shape4.png');
 blobshape = imread('shapes/shape1.png');
 
-swatches = imread('swatches.png');
+swatches = imread('swatch4.png');
 
-blabs = GenPearls(blabshape,swatches, 171);
-blibs = GenPearls(blibshape,swatches, 171);
-blobs = GenPearls(blobshape,swatches, 171);
+nr = 777;
 
-r_blabs = GenPearls(imrotate(blabshape,90),swatches, 171);
-r_blibs = GenPearls(imrotate(blibshape,90),swatches, 171);
+blabs = GenPearls(blabshape,swatches, nr);
+blibs = GenPearls(blibshape,swatches, nr);
+blobs = GenPearls(blobshape,swatches, nr);
+
+r_blabs = GenPearls(imrotate(blabshape,90),swatches, nr);
+r_blibs = GenPearls(imrotate(blibshape,90),swatches, nr);
 
 
 % 
@@ -42,10 +44,10 @@ clab = rgb2lab(c);
 
 % load blibs.mat;
 % circles = blibs;
-load dots.mat
-circles = dots;
 
-im = imread('images/wave.jpg');
+circles = blobs;
+
+im = imread('images/birds.jpg');
 imshow(im);
 im = rgb2lab(im);
 [nr_rows, nr_cols] = size(im(:,:,1));
@@ -58,7 +60,7 @@ f = circles{1};
 restRow = mod(nr_rows,r);
 restCol = mod(nr_cols,r);
 
-im = cropIm(im, r, restRow, restCol, nr_rows, nr_cols);
+im = cropIm(im, r);
 [nr_rows, nr_cols] = size(im(:,:,1));
 
 %imshow(img)
