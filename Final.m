@@ -8,7 +8,7 @@ thres = 0.13; % Threshold for pixel values
 %Threshold for optimization
 similarity_threshold = 0.1;
 
-img = im2double(imread('images/wave.jpg'));
+img = im2double(imread('images/jag.jpg'));
 img = checkSize(img);
 [row, col] = size(img(:,:,1));
 
@@ -165,5 +165,27 @@ end
 imshow(resultIm)
 figure
 imshow(img)
+
+%% Check the quality with s-cielab
+
+% To xyz
+imgXYZ = rgb2xyz(cropIm(img,s));
+resultXYZ = rgb2xyz(resultIm);
+
+% s-Cielab function
+sampPerDeg = round(72 / ((180/pi)*atan(1/18))); % correct? change this later
+whiteD65 = [95.05, 100, 108.9];
+
+result_quality = scielab(sampPerDeg, imgXYZ, resultXYZ, whiteD65, 'xyz');
+
+mean_quality = mean(mean(result_quality));
+
+%Show the quality difference
+figure
+subplot(1,3,1), imshow(img);
+subplot(1,3,2), imshow(resultIm);
+subplot(1,3,3), imshow(result_quality);
+
+
 
 
